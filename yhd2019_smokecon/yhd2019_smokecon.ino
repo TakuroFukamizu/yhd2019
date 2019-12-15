@@ -8,7 +8,7 @@
 
 #define OPEN_LINE_SPAN 500
 #define DELAY_LINE_SPAN 500
-#define DELAY_CHAR_SPAN 1500
+#define DELAY_CHAR_SPAN 1000
 //#define OPEN_LINE_SPAN 100
 //#define DELAY_LINE_SPAN 1500
 //#define DELAY_CHAR_SPAN 3000
@@ -21,32 +21,29 @@ int pin[6] = {2,3,4,6,7,8};
 // 5, 9は未使用
 
 int seq[][3] = { // kind, param1, speed
-  { SEQ_TYPE_DELAY,      1000, 0 },
   { SEQ_TYPE_PLAY_PTN,   0,    2 },
+//  { SEQ_TYPE_DELAY,      500,  0 },
   { SEQ_TYPE_PLAY_PTN,   1,    2 },
   { SEQ_TYPE_DELAY,      500,  0 },
-  { SEQ_TYPE_PLAY_PTN,   2,    1.5 },
-  { SEQ_TYPE_PLAY_PTN,   1,    1.5 },
-  { SEQ_TYPE_PLAY_PTN,   2,    1.5 },
-  { SEQ_TYPE_PLAY_PTN,   3,    1.5 },
-  { SEQ_TYPE_PLAY_PTN,   2,    1.5 },
-//  { SEQ_TYPE_LOOP_START, 0,    0 }, // 30sec
-  { SEQ_TYPE_PLAY_PTN,   3,    1 },
-  { SEQ_TYPE_PLAY_PTN,   4,    1 },
-  { SEQ_TYPE_PLAY_PTN,   5,    1 },
-  { SEQ_TYPE_PLAY_PTN,   3,    1 },
-  { SEQ_TYPE_PLAY_PTN,   5,    1 }, // 45sec (+15sec)
-  { SEQ_TYPE_DELAY,      1000, 0 },
-  { SEQ_TYPE_PLAY_PTN,   6,    2 }, 
-  { SEQ_TYPE_PLAY_PTN,   7,    2 }, 
+//  { SEQ_TYPE_PLAY_PTN,   2,    1 },
+//  { SEQ_TYPE_PLAY_PTN,   3,    1 },
+//  { SEQ_TYPE_PLAY_PTN,   2,    1 },
+//  { SEQ_TYPE_LOOP_START, 0,    0 }, // 20sec
+//  { SEQ_TYPE_PLAY_PTN,   3,    1 },
+//  { SEQ_TYPE_PLAY_PTN,   4,    1 },
+//  { SEQ_TYPE_PLAY_PTN,   5,    1 },
+//  { SEQ_TYPE_PLAY_PTN,   3,    1 },
+//  { SEQ_TYPE_PLAY_PTN,   5,    1 }, // 35sec (+15sec)
+//  { SEQ_TYPE_DELAY,      500, 0 },
+//  { SEQ_TYPE_PLAY_PTN,   6,    2 }, 
+//  { SEQ_TYPE_PLAY_PTN,   7,    2 }, 
   { SEQ_TYPE_PLAY_PTN,   6,    1 }, 
   { SEQ_TYPE_PLAY_PTN,   7,    1 }, 
-  { SEQ_TYPE_PLAY_PTN,   8,    1 }, 
-  { SEQ_TYPE_PLAY_PTN,   9,    1 }, // 70sec (+12sec, +12sec)
+//  { SEQ_TYPE_PLAY_PTN,   8,    1 }, 
+//  { SEQ_TYPE_PLAY_PTN,   9,    1 }, // 60sec (+12sec, +12sec)
   { SEQ_TYPE_PLAY_PTN,   10,   1 }, 
-  { SEQ_TYPE_PLAY_PTN,   11,   2 },
-  { SEQ_TYPE_DELAY,      500,  0 }, 
-  { SEQ_TYPE_PLAY_PTN,   12,   2 }, // 82sec
+  { SEQ_TYPE_PLAY_PTN,   11,   1 },
+  { SEQ_TYPE_PLAY_PTN,   12,   1 }, // 72sec
 };
  
 int pattern[][6][6] = {
@@ -167,13 +164,13 @@ void setup() {
 
   delay(100);
   
-  // initial behavior
-  for(int i=0; i<6; i++) {
-    digitalWrite(pin[i], 1);
-    delay(500);
-    digitalWrite(pin[i], 0);
-    delay(500);
-  }
+//  // initial behavior
+//  for(int i=0; i<6; i++) {
+//    digitalWrite(pin[i], 1);
+//    delay(500);
+//    digitalWrite(pin[i], 0);
+//    delay(500);
+//  }
 
   Serial.println("initialize ok");
 }
@@ -216,5 +213,5 @@ void loop() {
     }
     delay(500);
   }
-  delay(5000);
+  delay(10000);
 }
